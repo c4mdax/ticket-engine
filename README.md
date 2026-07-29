@@ -84,7 +84,6 @@ ___
 }
 ```
 ### With GUI
-*(Here you can add a screenshot of your dark-themed web interface showing the results)*
 `![TicketEngine_UI](ui.png)`
 
 ___
