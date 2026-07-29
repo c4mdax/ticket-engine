@@ -84,7 +84,8 @@ ___
 }
 ```
 ### With GUI
-`![TicketEngine_UI](ui.png)`
+<img width="631" height="430" alt="ui" src="https://github.com/user-attachments/assets/207cda4e-6034-4919-9e59-62b2d6eafdad" />
+
 
 ___
 ## Cloud Deployment
