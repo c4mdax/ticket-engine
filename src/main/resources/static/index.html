@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TicketEngine PoC</title>
+</head>
+<body>
+    <h1>Proof of Concept: Concurrencia Java y Scala</h1>
+    <hr>
+    
+    <div>
+        <label>Boletos Iniciales: </label>
+        <input type="number" id="tickets" value="100">
+    </div>
+    <br>
+    
+    <div>
+        <label>Compradores (Hilos): </label>
+        <input type="number" id="buyers" value="10000">
+    </div>
+    <br>
+    
+    <div>
+        <label>Motor de Concurrencia: </label>
+        <select id="engine">
+            <option value="java">Java 21 (ReentrantLock)</option>
+            <option value="scala">Scala 3 (Pekko Actors)</option>
+        </select>
+    </div>
+    <br>
+    
+    <button onclick="runSimulation()" id="runBtn">Ejecutar Simulación</button>
+    
+    <hr>
+    <h3>Resultados (JSON):</h3>
+    <pre id="resultsPanel">Esperando ejecución...</pre>
+
+    <script>
+        async function runSimulation() {
+            const btn = document.getElementById('runBtn');
+            const resultsPanel = document.getElementById('resultsPanel');
+            
+            const payload = {
+                initialTickets: parseInt(document.getElementById('tickets').value),
+                totalBuyers: parseInt(document.getElementById('buyers').value),
+                engineType: document.getElementById('engine').value
+            };
+
+            btn.disabled = true;
+            resultsPanel.innerText = "Procesando peticiones...";
+
+            try {
+                const response = await fetch('/api/simulation/run', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const data = await response.json();
+                
+                resultsPanel.innerText = JSON.stringify(data, null, 2);
+            } catch (error) {
+                resultsPanel.innerText = "Error: ¿Está encendido el servidor?";
+            } finally {
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

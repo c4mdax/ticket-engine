@@ -31,3 +31,16 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Emacs ###
+*~
+*.~[0-9]*~
+\#*\#.\#*
+.emacs.desktop
+.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+
+### Maven
+.class
