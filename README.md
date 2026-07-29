@@ -1,4 +1,4 @@
-# TicketEngine: Concurrency & Actor Model Benchmark
+# TicketEngine: PoC Concurrency in Java and Scala
 URL: https://ticket-engine-demo.onrender.com/
 ## Overview
 A proof-of-concept (PoC) backend engine designed to evaluate and compare two concurrency paradigms under stress: Threads using Java/VirtualThreads and the Actor Model using Scala/Pekko. It exposes a REST API that orchestrates 10,000 concurrent requests competing for a shared resource (100 available tickets), ensuring zero race conditions.
